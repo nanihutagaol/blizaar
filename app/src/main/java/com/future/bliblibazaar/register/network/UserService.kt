@@ -1,6 +1,6 @@
-package com.future.bliblibazaar.network.service
+package com.future.bliblibazaar.register.network
 
-import com.future.bliblibazaar.model.User
+import com.future.bliblibazaar.register.model.User
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.POST

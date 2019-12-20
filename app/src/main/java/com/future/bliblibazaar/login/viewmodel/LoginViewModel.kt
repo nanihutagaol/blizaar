@@ -1,31 +1,33 @@
 package com.future.bliblibazaar.login.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.future.bliblibazaar.login.model.AuthenticateRequest
 import com.future.bliblibazaar.login.model.AuthenticateResponse
-import com.future.bliblibazaar.login.repositories.LoginReporsitory
+import com.future.bliblibazaar.login.repositories.LoginRepository
 import kotlinx.coroutines.launch
 
 class LoginViewModel : ViewModel() {
     val loginLiveData = MutableLiveData<AuthenticateResponse>()
-    private val loginRepository = LoginReporsitory()
-
+    private val loginRepository = LoginRepository()
 
     fun login(request: AuthenticateRequest) {
         viewModelScope.launch {
             val response = loginRepository.login(request)
-            if (response.isSuccessful) {
 
+            if (response.isSuccessful) {
                 loginLiveData.postValue(response.body())
 
                 /**
                  * if token exist call repository.updateToken(string)
                  */
             } else {
+                Log.e("ERROR", "Data not fetch")
                 //TODO HTTP Failure
             }
         }
     }
+
 }

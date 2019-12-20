@@ -6,9 +6,8 @@ import com.future.bliblibazaar.network.RetrofitClient
 import com.future.bliblibazaar.login.network.AuthService
 import retrofit2.Response
 
-class LoginReporsitory {
+class LoginRepository {
     private val authService: AuthService = RetrofitClient.createAuthService()
-
 
     suspend fun login(request: AuthenticateRequest): Response<AuthenticateResponse> {
         return authService.login(request)
@@ -17,4 +16,5 @@ class LoginReporsitory {
     fun updateToken(token: String){
         //TODO sharedpreference
     }
+
 }

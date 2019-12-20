@@ -12,9 +12,10 @@ import com.future.bliblibazaar.activity.MainActivity
 import com.future.bliblibazaar.databinding.ActivityLoginBinding
 import com.future.bliblibazaar.login.model.AuthenticateRequest
 import com.future.bliblibazaar.login.viewmodel.LoginViewModel
-import com.future.bliblibazaar.model.User
+import com.future.bliblibazaar.register.model.User
 import com.future.bliblibazaar.network.RetrofitClient
-import com.future.bliblibazaar.network.service.UserService
+import com.future.bliblibazaar.register.network.UserService
+import com.future.bliblibazaar.register.view.RegisterActivity
 import org.slf4j.LoggerFactory
 import retrofit2.Call
 import retrofit2.Callback
@@ -33,11 +34,15 @@ class LoginActivity : AppCompatActivity() {
         mBinding.btLogin.setOnClickListener {
             val email = mBinding.etEmail.text.toString()
             val password = mBinding.etPassword.text.toString()
+
             loginViewModel.login(AuthenticateRequest(email, password))
         }
 
+
         mBinding.btRegister.setOnClickListener {
-            //TODO register
+            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+
+            startActivity(intent)
         }
 
         loginViewModel.loginLiveData.observe(this, Observer {
@@ -49,7 +54,7 @@ class LoginActivity : AppCompatActivity() {
                 val cacheEditor = cache.edit()
                 val intent = Intent(this@LoginActivity, MainActivity::class.java)
 
-                cacheEditor.putString("Token", it.token)
+                cacheEditor.putString("token", it.token)
                 cacheEditor.apply()
                 startActivity(intent)
                 finish()

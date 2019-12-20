@@ -5,7 +5,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/gradient"
         android:gravity="center"
         android:orientation="vertical"
         android:padding="30dp">
@@ -32,7 +31,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:text="@string/app_name"
-                android:textColor="@color/white"
+                android:textColor="#000"
                 android:textSize="20pt" />
 
         </LinearLayout>
@@ -51,7 +50,7 @@
                 android:id="@+id/et_email"
                 android:layout_width="350dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_button"
+                android:background="@drawable/round_edit_text"
                 android:hint="Email"
                 android:inputType="text"
                 android:padding="10dp"
@@ -66,7 +65,7 @@
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_button"
+                android:background="@drawable/round_edit_text"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:padding="10dp"
@@ -89,7 +88,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/forgotPassword"
-                android:textColor="@color/white"
+                android:textColor="#000"
                 android:textSize="9pt" />
 
             <Button
@@ -98,40 +97,41 @@
                 android:layout_height="38dp"
                 android:layout_marginLeft="85dp"
                 android:background="@drawable/round_button"
-                android:backgroundTint="#8CCA3D"
+                android:backgroundTint="#FEBC13"
                 android:text="@string/login"
-                android:textColor="@color/white" />
+                android:textColor="@color/white"
+                android:textAllCaps="false"/>
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_login">
+            app:layout_constraintStart_toStartOf="parent">
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="@string/dontHaveAccount"
-                android:textColor="@color/white"
-                android:textSize="9pt" />
+                android:textSize="9pt"
+                android:textColor="#000"/>
 
             <Button
                 android:id="@+id/bt_register"
-                android:layout_width="253dp"
-                android:layout_height="38dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/round_button"
-                android:backgroundTint="@color/darkBlue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
                 android:text="@string/register"
-                android:textColor="@color/white" />
+                android:textSize="9pt"
+                android:textColor="#0085FF"
+                android:textAllCaps="false"/>
 
         </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
