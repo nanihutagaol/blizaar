@@ -1,5 +1,6 @@
 package com.future.bliblibazaar.login.viewmodel
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -18,13 +19,14 @@ class LoginViewModel : ViewModel() {
             val response = loginRepository.login(request)
 
             if (response.isSuccessful) {
+                Log.i("Success", "Everything's good")
                 loginLiveData.postValue(response.body())
 
                 /**
                  * if token exist call repository.updateToken(string)
                  */
             } else {
-                Log.e("ERROR", "Data not fetch")
+                Log.e("ERROR", "Something wrong");
                 //TODO HTTP Failure
             }
         }

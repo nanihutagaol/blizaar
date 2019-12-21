@@ -1,6 +1,5 @@
 package com.future.bliblibazaar.login.view
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -12,10 +11,11 @@ import com.future.bliblibazaar.activity.MainActivity
 import com.future.bliblibazaar.databinding.ActivityLoginBinding
 import com.future.bliblibazaar.login.model.AuthenticateRequest
 import com.future.bliblibazaar.login.viewmodel.LoginViewModel
-import com.future.bliblibazaar.register.model.User
 import com.future.bliblibazaar.network.RetrofitClient
+import com.future.bliblibazaar.register.model.User
 import com.future.bliblibazaar.register.network.UserService
 import com.future.bliblibazaar.register.view.RegisterActivity
+import com.future.bliblibazaar.util.SharedPreferencesManager
 import org.slf4j.LoggerFactory
 import retrofit2.Call
 import retrofit2.Callback
@@ -38,7 +38,6 @@ class LoginActivity : AppCompatActivity() {
             loginViewModel.login(AuthenticateRequest(email, password))
         }
 
-
         mBinding.btRegister.setOnClickListener {
             val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
 
@@ -47,16 +46,12 @@ class LoginActivity : AppCompatActivity() {
 
         loginViewModel.loginLiveData.observe(this, Observer {
             if (it.token.isEmpty()) {
-                Toast.makeText(this@LoginActivity, "Login gagal", Toast.LENGTH_SHORT)
+                Toast.makeText(this@LoginActivity, "Login failed", Toast.LENGTH_SHORT)
                     .show()
             } else {
-                val cache = getSharedPreferences("blibli_bazaar", Context.MODE_PRIVATE)
-                val cacheEditor = cache.edit()
-                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                SharedPreferencesManager.putCache(this, "blizaar_token", it.token)
 
-                cacheEditor.putString("token", it.token)
-                cacheEditor.apply()
-                startActivity(intent)
+                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
                 finish()
             }
         })
