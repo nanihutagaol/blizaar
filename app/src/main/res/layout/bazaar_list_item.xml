@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
+
+    <TextView
+        android:id="@+id/tv_bazaar_name"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="25dp"
+        android:text="Bazaar Produk Retur Sarana Jaya - November (2019)"
+        android:textSize="6pt"
+        android:textColor="#000" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="25dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="End Date:"
+            android:textColor="#000"
+            android:textSize="6pt" />
+
+        <TextView
+            android:id="@+id/tv_bazaar_end_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="10/11/19 17:00"
+            android:textColor="#F50000"
+            android:textSize="6pt" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/bt_bazaar_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/qr_button"
+        android:src="@drawable/ic_keyboard_arrow_right_black_24dp" />
+
+</LinearLayout>

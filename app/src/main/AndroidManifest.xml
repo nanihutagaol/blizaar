@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".AppComponent"
         android:allowBackup="true"
         android:networkSecurityConfig="@xml/network_security_config"
         android:icon="@mipmap/ic_launcher"
@@ -19,9 +20,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login.view.LoginActivity" />
-        <activity android:name=".register.view.RegisterActivity" />
+        <activity android:name=".auth.view.LoginActivity"/>
+        <activity android:name=".auth.view.RegisterActivity"/>
         <activity android:name=".activity.MainActivity" />
+        <activity android:name=".bazaar.view.BazaarDetailActivity"/>
     </application>
 
 </manifest>

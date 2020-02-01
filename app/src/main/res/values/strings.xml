@@ -5,6 +5,7 @@
     <string name="login">Login</string>
     <string name="dontHaveAccount">Don\'t have an account?</string>
     <string name="register">Register</string>
+    <string name="terms_condition">By creating an account, I agree to Blibli Bazaar <u>Terms of use</u> and <u>Privacy Policy</u></string>
     <string name="menu_bazaar">Bazaar</string>
     <string name="menu_search">Search</string>
     <string name="menu_history">History</string>
