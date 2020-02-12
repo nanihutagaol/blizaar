@@ -10,12 +10,14 @@ import com.future.bliblibazaar.fragment.HistoryFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : BaseActivity() {
-    private var cartFragment: CartBottomSheetFragment? = null
     private lateinit var mBinding: ActivityMainBinding
+    private var cartFragment: CartBottomSheetFragment? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        validateToken()
         initToolbar()
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
@@ -30,14 +32,14 @@ class MainActivity : BaseActivity() {
                     cartFragment?.let { cart ->
                         showDialogFragment(cart, "CART_FRAGMENT")
                     } ?: run {
-                        cartFragment = CartBottomSheetFragment.newInstance("")
+                        cartFragment = CartBottomSheetFragment.newInstance()
                         showDialogFragment(cartFragment!!, "CART_FRAGMENT")
                     }
 
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.action_history -> {
-                    initFragmentStateLoss(HistoryFragment(),"HISTORY_FRAGMENT", R.id.fl_countainer)
+                    initFragmentStateLoss(HistoryFragment(), "HISTORY_FRAGMENT", R.id.fl_countainer)
 
                     return@setOnNavigationItemSelectedListener true
                 }

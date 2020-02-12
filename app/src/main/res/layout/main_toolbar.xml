@@ -13,9 +13,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:navigationIcon="@drawable/ic_keyboard_arrow_left_white_24dp"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         app:subtitleTextColor="#ffffff"
-        app:titleTextColor="#ffffff" />
-
+        app:titleTextColor="#ffffff"/>
 </layout>

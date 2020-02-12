@@ -6,12 +6,12 @@ import com.future.bliblibazaar.auth.network.AuthService
 import com.future.bliblibazaar.bazaar.network.BazaarService
 import com.future.bliblibazaar.cart.network.CartService
 import com.future.bliblibazaar.network.service.UserService
+import com.future.bliblibazaar.order.network.OrderService
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-
 
 object RetrofitClient {
     private val API_URL = "http://10.0.2.2:9000/api/"
@@ -57,6 +57,15 @@ object RetrofitClient {
             .build()
 
         return retrofit.create(CartService::class.java)
+    }
+
+    fun createOrderService(): OrderService {
+        val retrofit = Retrofit.Builder()
+            .baseUrl(API_URL).client(clientWithAuthorization)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        return retrofit.create(OrderService::class.java)
     }
 
 }

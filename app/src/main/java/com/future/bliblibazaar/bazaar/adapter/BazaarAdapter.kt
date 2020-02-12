@@ -10,9 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.future.bliblibazaar.R
 import com.future.bliblibazaar.bazaar.model.BazaarDto
 import com.future.bliblibazaar.bazaar.view.BazaarDetailActivity
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class BazaarAdapter(private val bazaars: ArrayList<BazaarDto>) :
     RecyclerView.Adapter<BazaarAdapter.BazaarViewHolder>() {
+    private val simpleFormatter = SimpleDateFormat("dd/MM/yy HH:mm")
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BazaarViewHolder {
         val view = LayoutInflater
@@ -24,6 +28,7 @@ class BazaarAdapter(private val bazaars: ArrayList<BazaarDto>) :
 
     override fun onBindViewHolder(holder: BazaarViewHolder, position: Int) {
         holder.tvBazaarName.text = bazaars[position].name
+        holder.tvBazaarEndDate.text = simpleFormatter.format(Date(bazaars[position].endDate))
 
         holder.btBazaarDetail.setOnClickListener {
             val intent = Intent(it.context, BazaarDetailActivity::class.java)

@@ -49,6 +49,10 @@ dependencies {
     //Gson
     implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
 
+    //Zxing
+    implementation 'com.google.zxing:core:3.2.1'
+    implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
+
     //Test
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'

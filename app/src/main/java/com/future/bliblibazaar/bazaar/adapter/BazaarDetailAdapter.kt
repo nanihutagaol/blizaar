@@ -1,5 +1,6 @@
 package com.future.bliblibazaar.bazaar.adapter
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,11 +34,14 @@ class BazaarDetailAdapter(
         holder.productReturnReason.text = bazaarItems[position].productReturnReason
         holder.productCondition.text = bazaarItems[position].productCondition
         holder.productPrice.text = "Rp. ${bazaarItems[position].productOfferPrice}"
-        holder.bookProduct.setOnClickListener {
-            iCommunicator.book(bazaarItems[holder.adapterPosition].productId)
+        if (bazaarItems[position].productStock == 0) {
+            holder.bookProduct.isEnabled = false
+        } else {
+            holder.bookProduct.setOnClickListener {
+                iCommunicator.book(bazaarItems[holder.adapterPosition].productId)
+            }
         }
     }
-
 
     inner class BazaarProductViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val productName = itemView.findViewById<TextView>(R.id.tv_product_name)
