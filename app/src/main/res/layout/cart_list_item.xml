@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/round_edit_text"
+    android:layout_marginBottom="10dp"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/tv_item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Redmi Note 7 (4/64GB)"
+        android:textSize="10pt"
+        android:textColor="#000" />
+
+    <TextView
+        android:id="@+id/tv_item_return_reason"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Customer request"
+        android:textSize="8pt" />
+
+    <TextView
+        android:id="@+id/tv_item_condition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Produk dalam kondisi yang masih tersegel, Garansi Interasional"
+        android:textSize="8pt" />
+
+    <TextView
+        android:id="@+id/tv_item_price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rp. 1.800.000"
+        android:textColor="#FEBC13"
+        android:textSize="12pt" />
+
+</LinearLayout>

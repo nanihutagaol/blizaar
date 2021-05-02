@@ -1,63 +1,61 @@
 package com.future.bliblibazaar.activity
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
-import androidx.fragment.app.Fragment
+import androidx.databinding.DataBindingUtil
 import com.future.bliblibazaar.R
-import com.future.bliblibazaar.fragment.BazaarFragment
+import com.future.bliblibazaar.bazaar.view.BazaarFragment
+import com.future.bliblibazaar.cart.view.CartBottomSheetFragment
+import com.future.bliblibazaar.databinding.ActivityMainBinding
 import com.future.bliblibazaar.fragment.HistoryFragment
-import com.future.bliblibazaar.network.RetrofitClient
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class MainActivity : AppCompatActivity() {
-
-    private val userService = RetrofitClient.createUserService()
+class MainActivity : BaseActivity() {
+    private lateinit var mBinding: ActivityMainBinding
+    private var cartFragment: CartBottomSheetFragment? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+
+        validateToken()
+        initToolbar()
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
-
-        loadFragment(BazaarFragment())
-
-        bottomNavigationView.setOnNavigationItemSelectedListener{
-
-            when(it.itemId) {
+        bottomNavigationView.setOnNavigationItemSelectedListener {
+            when (it.itemId) {
                 R.id.action_bazaar -> {
-                    loadFragment(BazaarFragment())
+                    initFragmentStateLoss(BazaarFragment(), "BAZAAR_FRAGMENT", R.id.fl_countainer)
 
                     return@setOnNavigationItemSelectedListener true
                 }
-                R.id.action_search -> {
-                    Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show()
+                R.id.action_cart -> {
+                    cartFragment?.let { cart ->
+                        showDialogFragment(cart, "CART_FRAGMENT")
+                    } ?: run {
+                        cartFragment = CartBottomSheetFragment.newInstance()
+                        showDialogFragment(cartFragment!!, "CART_FRAGMENT")
+                    }
 
                     return@setOnNavigationItemSelectedListener true
                 }
                 R.id.action_history -> {
-                    loadFragment(HistoryFragment())
+                    initFragmentStateLoss(HistoryFragment(), "HISTORY_FRAGMENT", R.id.fl_countainer)
 
                     return@setOnNavigationItemSelectedListener true
                 }
                 else -> return@setOnNavigationItemSelectedListener false
             }
-
         }
+
+        initFragmentStateLoss(BazaarFragment(), "BAZAAR_FRAGMENT", R.id.fl_countainer)
     }
 
-    private fun loadFragment(fragment: Fragment?): Boolean {
-
-        if (fragment != null) {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.fragmentContainer, fragment)
-                .commit()
-
-            return true
+    private fun initToolbar() {
+        mBinding.customToolbar.toolbar.title = getString(R.string.app_name)
+        mBinding.customToolbar.toolbar.navigationIcon?.setVisible(false, false)
+        mBinding.customToolbar.toolbar.setNavigationOnClickListener {
+            //No Implementation required
         }
-
-        return false
     }
 
 }
